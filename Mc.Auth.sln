@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mc.Auth.Host", "src\Mc.Auth.Host\Mc.Auth.Host.csproj", "{8D9A94B3-FBD7-40ED-B7F5-A02D9AB67361}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{6EAE7809-F41D-48BE-B0DB-B676D43AD74B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mc.Auth.Api", "src\Mc.Auth.Api\Mc.Auth.Api.csproj", "{CCC4759F-3EA3-4911-8D0A-7BD2B40F73D0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mc.Auth.Database", "src\Mc.Auth.Database\Mc.Auth.Database.csproj", "{5B226E7B-F271-437F-8591-F94E9D95D36E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mc.Auth.Core", "src\Mc.Auth.Core\Mc.Auth.Core.csproj", "{1AFA5FA5-392D-4E0C-BCFF-2AA6890271D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DBD46707-EB17-4674-B713-AF103748C1E4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D9A94B3-FBD7-40ED-B7F5-A02D9AB67361}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D9A94B3-FBD7-40ED-B7F5-A02D9AB67361}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D9A94B3-FBD7-40ED-B7F5-A02D9AB67361}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D9A94B3-FBD7-40ED-B7F5-A02D9AB67361}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EAE7809-F41D-48BE-B0DB-B676D43AD74B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EAE7809-F41D-48BE-B0DB-B676D43AD74B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EAE7809-F41D-48BE-B0DB-B676D43AD74B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EAE7809-F41D-48BE-B0DB-B676D43AD74B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCC4759F-3EA3-4911-8D0A-7BD2B40F73D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCC4759F-3EA3-4911-8D0A-7BD2B40F73D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCC4759F-3EA3-4911-8D0A-7BD2B40F73D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCC4759F-3EA3-4911-8D0A-7BD2B40F73D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B226E7B-F271-437F-8591-F94E9D95D36E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B226E7B-F271-437F-8591-F94E9D95D36E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B226E7B-F271-437F-8591-F94E9D95D36E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B226E7B-F271-437F-8591-F94E9D95D36E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AFA5FA5-392D-4E0C-BCFF-2AA6890271D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AFA5FA5-392D-4E0C-BCFF-2AA6890271D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AFA5FA5-392D-4E0C-BCFF-2AA6890271D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AFA5FA5-392D-4E0C-BCFF-2AA6890271D9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8D9A94B3-FBD7-40ED-B7F5-A02D9AB67361} = {DBD46707-EB17-4674-B713-AF103748C1E4}
+		{CCC4759F-3EA3-4911-8D0A-7BD2B40F73D0} = {DBD46707-EB17-4674-B713-AF103748C1E4}
+		{5B226E7B-F271-437F-8591-F94E9D95D36E} = {DBD46707-EB17-4674-B713-AF103748C1E4}
+		{1AFA5FA5-392D-4E0C-BCFF-2AA6890271D9} = {DBD46707-EB17-4674-B713-AF103748C1E4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3682A748-F9F9-4E44-997B-CCDE22E069F7}
+	EndGlobalSection
+EndGlobal

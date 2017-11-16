@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  mc.auth:
+    image: mc.auth
+    build:
+      context: ./src/Mc.Auth.Host
+      dockerfile: Dockerfile
