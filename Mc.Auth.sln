@@ -15,6 +15,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mc.Auth.Core", "src\Mc.Auth
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DBD46707-EB17-4674-B713-AF103748C1E4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{4C7B6AF0-53E3-4AE7-B36D-9F48AE681182}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mc.Auth.Core.Unit.Tests", "test\Mc.Auth.Core.Unit.Tests\Mc.Auth.Core.Unit.Tests.csproj", "{456AF3C8-51C5-49D7-A255-5D2C5297F99B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +45,10 @@ Global
 		{1AFA5FA5-392D-4E0C-BCFF-2AA6890271D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1AFA5FA5-392D-4E0C-BCFF-2AA6890271D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1AFA5FA5-392D-4E0C-BCFF-2AA6890271D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{456AF3C8-51C5-49D7-A255-5D2C5297F99B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{456AF3C8-51C5-49D7-A255-5D2C5297F99B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{456AF3C8-51C5-49D7-A255-5D2C5297F99B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{456AF3C8-51C5-49D7-A255-5D2C5297F99B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +58,7 @@ Global
 		{CCC4759F-3EA3-4911-8D0A-7BD2B40F73D0} = {DBD46707-EB17-4674-B713-AF103748C1E4}
 		{5B226E7B-F271-437F-8591-F94E9D95D36E} = {DBD46707-EB17-4674-B713-AF103748C1E4}
 		{1AFA5FA5-392D-4E0C-BCFF-2AA6890271D9} = {DBD46707-EB17-4674-B713-AF103748C1E4}
+		{456AF3C8-51C5-49D7-A255-5D2C5297F99B} = {4C7B6AF0-53E3-4AE7-B36D-9F48AE681182}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3682A748-F9F9-4E44-997B-CCDE22E069F7}
