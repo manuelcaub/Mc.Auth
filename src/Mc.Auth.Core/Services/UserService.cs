@@ -6,9 +6,21 @@ namespace Mc.Auth.Core.Services
 {
     public class UserService : IUserService
     {
-        public Task<User> FindByEmailAsync(string email)
+        private readonly IUserRepository _userRepository;
+
+        public UserService(IUserRepository userRepository)
         {
-            return Task.FromResult(new User());
+            _userRepository = userRepository;
+        }
+
+        public async Task<User> FindByEmailAsync(string email)
+        {
+            return await _userRepository.FindByEmailAsync(email);
+        }
+
+        public async Task AddUserAsync(User user)
+        {
+            await _userRepository.AddUserAsync(user);
         }
     }
 }

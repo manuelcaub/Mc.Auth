@@ -1,7 +1,9 @@
-﻿namespace Mc.Auth.Core.Interfaces
+﻿using System.Threading.Tasks;
+
+namespace Mc.Auth.Core.Interfaces
 {
     public interface IAuthorizationService
     {
-        bool CheckPassword(string password, string email);
+        Task<bool> CheckPasswordAsync(string password, string email);
     }
 }

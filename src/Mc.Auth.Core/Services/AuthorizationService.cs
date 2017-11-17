@@ -1,13 +1,22 @@
-﻿using Mc.Auth.Core.Entities;
+﻿using System.Threading.Tasks;
 using Mc.Auth.Core.Interfaces;
 
 namespace Mc.Auth.Core.Services
 {
     public class AuthorizationService : IAuthorizationService
     {
-        public bool CheckPassword(string password, string email)
+        private readonly IUserRepository _userRepository;
+
+        public AuthorizationService(IUserRepository userRepository)
         {
-            return true;
+            _userRepository = userRepository;
+        }
+
+        public async Task<bool> CheckPasswordAsync(string password, string email)
+        {
+            var user = await _userRepository.FindByEmailAsync(email);
+            return !string.IsNullOrWhiteSpace(user?.Password)
+                && user.Password == password;
         }
     }
 }
