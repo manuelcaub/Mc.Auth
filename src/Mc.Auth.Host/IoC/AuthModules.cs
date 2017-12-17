@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using Mc.Auth.Api;
 using Mc.Auth.Core.Entities;
@@ -7,45 +8,67 @@ using Mc.Auth.Core.Services;
 using Mc.Auth.Database.Context;
 using Mc.Auth.Database.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using IAuthorizationService = Mc.Auth.Core.Interfaces.IAuthorizationService;
 
 namespace Mc.Auth.Host.IoC
 {
     public static class AuthModule
     {
-        public static IServiceCollection AddAuthCoreModule(this IServiceCollection services)
+        public static IServiceCollection AddMcAuthentication(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddAuthConfiguration(configuration)
+                .AddAuthCoreModule()
+                .AddAuthDatabaseModule()
+                .AddAuthApiModule()
+                .AddJwtAuthentication()
+                .AddMvc(config =>
+                {
+                    config.Filters.Add(
+                        new AuthorizeFilter(
+                            new AuthorizationPolicyBuilder()
+                                .RequireAuthenticatedUser()
+                                .Build()));
+                });
+
+            return services;
+        }
+
+        private static IServiceCollection AddAuthCoreModule(this IServiceCollection services)
         {
             services.AddScoped<IAuthorizationService, AuthorizationService>();
             services.AddScoped<IUserService, UserService>();
             return services;
         }
 
-        public static IServiceCollection AddAuthApiModule(this IServiceCollection services)
+        private static IServiceCollection AddAuthApiModule(this IServiceCollection services)
         {
             services.AddScoped<ITokenProvider, TokenProvider>();
+            services.AddScoped<JwtSecurityTokenHandler>();
             return services;
         }
 
-        public static IServiceCollection AddAuthDatabaseModule(this IServiceCollection services)
+        private static IServiceCollection AddAuthDatabaseModule(this IServiceCollection services)
         {
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddDbContext<ApplicationContext>();
             return services;
         }
 
-        public static IServiceCollection AddAuthConfiguration(this IServiceCollection services, IConfiguration configuration)
+        private static IServiceCollection AddAuthConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
-            services.Configure<ApplicationSettings>(configuration);
-            services.AddScoped(cfg => cfg.GetService<IOptions<ApplicationSettings>>().Value);
-            services.AddScoped(x => x.GetService<IOptions<ApplicationSettings>>().Value.Auth);
+            services.Configure<Authentication>(configuration.GetSection(nameof(Authentication)));
+            services.AddScoped(x => x.GetService<IOptionsSnapshot<Authentication>>().Value);
             services.AddScoped(x => configuration);
             return services;
         }
 
-        public static IServiceCollection AddJwtAuthentication(this IServiceCollection services)
+        private static IServiceCollection AddJwtAuthentication(this IServiceCollection services)
         {
             services.AddAuthentication(options =>
             {
@@ -53,7 +76,7 @@ namespace Mc.Auth.Host.IoC
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(options =>
             {
-                var authSettings = services.BuildServiceProvider().GetService<ApplicationSettings>().Auth;
+                var authSettings = services.BuildServiceProvider().GetService<Authentication>();
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,

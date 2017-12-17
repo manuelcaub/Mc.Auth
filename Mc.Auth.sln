@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mc.Auth.Host", "src\Mc.Auth.Host\Mc.Auth.Host.csproj", "{8D9A94B3-FBD7-40ED-B7F5-A02D9AB67361}"
 EndProject
@@ -17,7 +17,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DBD46707-EB1
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{4C7B6AF0-53E3-4AE7-B36D-9F48AE681182}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mc.Auth.Core.Unit.Tests", "test\Mc.Auth.Core.Unit.Tests\Mc.Auth.Core.Unit.Tests.csproj", "{456AF3C8-51C5-49D7-A255-5D2C5297F99B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mc.Auth.Core.Unit.Tests", "test\Mc.Auth.Core.Unit.Tests\Mc.Auth.Core.Unit.Tests.csproj", "{456AF3C8-51C5-49D7-A255-5D2C5297F99B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuspec", "nuspec", "{18EE3089-459C-4FCF-B6C8-9CABF42B619F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

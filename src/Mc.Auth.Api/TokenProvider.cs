@@ -9,11 +9,13 @@ namespace Mc.Auth.Api
 {
     public class TokenProvider : ITokenProvider
     {
-        private readonly AuthorizationSettings _authSettings;
+        private readonly Authentication _authSettings;
+        private readonly JwtSecurityTokenHandler _securityTokenHandler;
 
-        public TokenProvider(AuthorizationSettings authSettings)
+        public TokenProvider(Authentication authSettings, JwtSecurityTokenHandler securityTokenHandler)
         {
             _authSettings = authSettings;
+            _securityTokenHandler = securityTokenHandler;
         }
 
         public string GetToken()
@@ -23,7 +25,7 @@ namespace Mc.Auth.Api
                 expires: DateTime.UtcNow.AddMinutes(_authSettings.Expires),
                 signingCredentials: new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_authSettings.SecretKey)), SecurityAlgorithms.HmacSha256));
 
-            return new JwtSecurityTokenHandler().WriteToken(jwsToken);
+            return _securityTokenHandler.WriteToken(jwsToken);
         }
     }
 }

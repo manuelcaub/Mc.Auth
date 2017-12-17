@@ -2,6 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <PackageId>Mc.Auth.Api</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Authors>manuelcaub</Authors>
+    <Description>Jwt authorization API</Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Copyright>Copyright 2017 (c)</Copyright>
+    <PackageTags>Auth Jwt</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

@@ -17,7 +17,7 @@ namespace Mc.Auth.Host
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", false, false);
+                .AddJsonFile("appsettings.json", false, true);
 
             Configuration = builder.Build();
         }
@@ -25,26 +25,13 @@ namespace Mc.Auth.Host
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMcAuthentication(Configuration);
 
-            services.AddAuthConfiguration(Configuration);
-            services.AddAuthCoreModule();
-            services.AddAuthDatabaseModule();
-            services.AddAuthApiModule();
-            
-            services.AddJwtAuthentication();
             services.AddRouting();
-            services.AddMvc(config =>
-            {
-                config.Filters.Add(
-                    new AuthorizeFilter(
-                        new AuthorizationPolicyBuilder()
-                            .RequireAuthenticatedUser()
-                            .Build()));
-            });
-
+            services.AddCors();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+                c.SwaggerDoc("v1", new Info { Title = "Auth API", Version = "v1" });
             });
         }
 
@@ -62,6 +49,12 @@ namespace Mc.Auth.Host
             });
 
             app.UseAuthentication();
+            app.UseCors(policy =>
+            {
+                policy.AllowAnyOrigin();
+                policy.AllowAnyMethod();
+                policy.AllowAnyHeader();
+            });
             app.UseMvc();
         }
     }
